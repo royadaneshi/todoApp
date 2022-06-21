@@ -308,7 +308,7 @@ func select_todos_date(){
 }
   if(select_todos.count == 0){
     print("No Todo to show you in this Date")
-    select_todos_date()
+    main()
   }
   let selected_todos = sort_todos(select_todos,"deadLine", true)
   print_todos(selected_todos)
@@ -322,8 +322,11 @@ func select_todos_date(){
             print_todos(selected_todos)
             var idToRemove : Int = 0;
             while true {
-                print("enter todo id to delete")
+                print("enter todo id to delete or enter cancel")
                 let input_string:String! = readLine()
+                if input_string == "cancel"{
+                  break
+                }
                 let temp :Int! = Int(input_string)
                 for td in selected_todos{
                   if(td.get_todo_id() == temp){
@@ -344,8 +347,7 @@ func select_todos_date(){
                 main()
             }
             else {
-                print("todo not found")
-                main()
+                print("cancel removing todo")
             }
         case "2":
             main() 
